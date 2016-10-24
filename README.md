@@ -10,5 +10,17 @@ This is an **automatic** process: the definition formats vary and the process is
 
 ## Install
 
+```
+$ npm install -g probably-flow-typed
+```
+
+
 ## Usage
 
+Use no arguments or use `--help` or `-h` to get the complete CLI API.
+
+To read in a Typescript definition file `some-typescript.d.ts` and dump the output to `some-flowtype.js`:
+```
+$ probably-flow-typed --typescript some-typescript.d.ts --output some-flowtype.js
+```
+If you don't specify an output it will default to stdout.
