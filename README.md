@@ -1,6 +1,8 @@
 # Probably Flow Typed
 *Converts Typescript "declaration files" into Flow "library definitions".*
 
+**This doesn't actually working yet.**
+
 ## What this is
 This is an automatic converter which takes in Typescript definitions and spits out Flowtype definitions. It's a pragmatic answer to the fact that [this library has over 1000 module definitions](https://github.com/DefinitelyTyped/DefinitelyTyped) and yet [this library has an order of magnitude less](https://github.com/flowtype/flow-typed).
 
