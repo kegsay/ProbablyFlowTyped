@@ -4,7 +4,7 @@
   "description": "Converts Typescript declaration files into Flow library definitions",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/runner.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/Kegsay/ProbablyFlowTyped/issues"
   },
-  "homepage": "https://github.com/Kegsay/ProbablyFlowTyped#readme"
+  "homepage": "https://github.com/Kegsay/ProbablyFlowTyped#readme",
+  "dependencies": {
+    "glob": "^7.1.1"
+  }
 }
