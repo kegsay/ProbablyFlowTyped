@@ -1,0 +1,26 @@
+{
+  "name": "probably-flow-typed",
+  "version": "0.0.1",
+  "description": "Converts Typescript declaration files into Flow library definitions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kegsay/ProbablyFlowTyped.git"
+  },
+  "keywords": [
+    "flow",
+    "typescript",
+    "flowtype",
+    "definitions",
+    "utility"
+  ],
+  "author": "Kegan Dougal",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Kegsay/ProbablyFlowTyped/issues"
+  },
+  "homepage": "https://github.com/Kegsay/ProbablyFlowTyped#readme"
+}
