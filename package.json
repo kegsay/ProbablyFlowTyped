@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Kegsay/ProbablyFlowTyped#readme",
   "dependencies": {
-    "glob": "^7.1.1"
+    "glob": "^7.1.1",
+    "typescript": "^2.0.3"
   }
 }
