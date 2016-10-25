@@ -22,9 +22,13 @@
   "bugs": {
     "url": "https://github.com/Kegsay/ProbablyFlowTyped/issues"
   },
+  "bin": {
+    "probably-flow-typed": "./app.js"
+  },
   "homepage": "https://github.com/Kegsay/ProbablyFlowTyped#readme",
   "dependencies": {
     "glob": "^7.1.1",
+    "nopt": "^3.0.6",
     "typescript": "^2.0.3"
   }
 }
