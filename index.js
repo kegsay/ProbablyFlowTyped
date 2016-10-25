@@ -1,10 +1,13 @@
+var util = require("util");
 var typescript = require("typescript");
+var helper = require("./lib/ast-helper");
 
 var debugReverseMappings = Object.create(null);
 
 function walkAst(node) {
     console.log(debugReverseMappings[node.kind]);
-    typescript.forEachChild(node, walkAst);
+    // console.log(util.inspect(node));
+            console.log("======");
 }
 
 
@@ -14,8 +17,5 @@ module.exports = function(input, opts) {
     Object.keys(typescript.SyntaxKind).forEach(function(k) {
         debugReverseMappings[typescript.SyntaxKind[k]] = k;
     });
-
-    walkAst(sourceFile);
-
-    return input;
+    return helper(input, sourceFile, walkAst);
 }
