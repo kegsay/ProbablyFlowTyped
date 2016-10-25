@@ -1,21 +1,29 @@
 var util = require("util");
-var typescript = require("typescript");
+var ts = require("typescript");
 var helper = require("./lib/ast-helper");
 
-var debugReverseMappings = Object.create(null);
+// https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions
+function escape(string){
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
 
 function walkAst(node) {
-    console.log(debugReverseMappings[node.kind]);
-    // console.log(util.inspect(node));
-            console.log("======");
+    if (!node.clobber) { return; }
+//    console.log(debugReverseMappings[node.kind] + " => " + node.source());
+
+    switch (node.kind) {
+        case ts.SyntaxKind.ExportKeyword:
+            if (node.parent && node.parent.kind === ts.SyntaxKind.FunctionDeclaration) {
+                node.clobber(node.source().replace("export", "declare"));
+            }
+            break;
+    }
 }
 
 
 module.exports = function(input, opts) {
     // Use typescript itself to extract the AST
-    var sourceFile = typescript.createSourceFile("tmp.d.ts", input, typescript.ScriptTarget.ES6, true);
-    Object.keys(typescript.SyntaxKind).forEach(function(k) {
-        debugReverseMappings[typescript.SyntaxKind[k]] = k;
-    });
-    return helper(input, sourceFile, walkAst);
+    var sourceFile = ts.createSourceFile("tmp.d.ts", input, ts.ScriptTarget.ES6, true);
+    return "// @flow\n" + helper(sourceFile.text, sourceFile, walkAst);
 }
+
