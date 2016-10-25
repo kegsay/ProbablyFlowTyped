@@ -9,7 +9,17 @@ function escape(string){
 
 function walkAst(node) {
     if (!node.clobber) { return; }
-//    console.log(debugReverseMappings[node.kind] + " => " + node.source());
+    // console.log(node.kindStr + " => " + node.source() + "\n============================");
+
+    // Remove all in-line comments
+    var src = node.source();
+    if (src.indexOf("//") !== -1) {
+        node.clobber(
+            src.split("\n").filter(function(x) {
+                return !/^[\s]*\/\//.test(x); // look for start of line -> some whitespace maybe -> "//"
+            }).join("\n")
+        );
+    }
 
     switch (node.kind) {
         case ts.SyntaxKind.ExportKeyword:
