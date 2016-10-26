@@ -26,6 +26,15 @@ glob(defsDir + "/*.d.ts", function(err, files) {
         // console.log("ACTUAL: " + actualOutput);
         var actualOutLines = actualOutput.split("\n");
         var expectedOutLines = expectedOutput.split("\n");
+
+        // strictly filter out lines that start "//" on both input and output - we don't care about comments!
+        actualOutLines = actualOutLines.filter(function(line) {
+            return line.trim().indexOf("//") !== 0;
+        });
+        expectedOutLines = expectedOutLines.filter(function(line) {
+            return line.trim().indexOf("//") !== 0;
+        });
+
         if (actualOutLines.length === expectedOutLines.length) {
             for (var lineNum = 0; lineNum < actualOutLines.length; lineNum++) {
                 if (actualOutLines[lineNum] === expectedOutLines[lineNum]) {
