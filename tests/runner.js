@@ -19,7 +19,7 @@ glob(defsDir + "/*.d.ts", function(err, files) {
     var numFails = 0;
     files.forEach(function(f) {
         f = path.resolve(f); // convert \ to / so we can replace with out dir
-        var outFile = f.replace(".d.ts", ".js");
+        var outFile = f.replace(".d.ts", ".js.flow");
         var expectedOutput = fs.readFileSync(outFile, "utf8");
         var actualOutput = new String(probsTyped(fs.readFileSync(f, "utf8")));
         // console.log("EXPECT: " + expectedOutput);
