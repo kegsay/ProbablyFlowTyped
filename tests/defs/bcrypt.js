@@ -1,5 +1,4 @@
 // @flow
-
 declare module "bcrypt" {
   declare function genSaltSync(rounds?: number): string;
   declare function genSalt(rounds: number, callback: (err: Error, salt: string) => void): void;
